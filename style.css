@@ -1,0 +1,12 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#telaDesenho {
+  width: 700px;
+  height: 500;
+  border-style: solid;
+  border-color: black;
+}
+
