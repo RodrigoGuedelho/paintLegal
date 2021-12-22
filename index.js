@@ -1,20 +1,30 @@
 document.addEventListener('DOMContentLoaded', ()=> {
   const tela = document.querySelector('#telaDesenho');
-  const btnBorracha = document.querySelector("#btnBorracha")
+  const btnBorracha = document.querySelector("#btnBorracha");
+  
+  const btnColor = document.querySelectorAll(".btn-color");
+  const btnVerde = document.querySelector("btnVerde");
+  const btnAmarelo = document.querySelector("btnAmarelo");
+  const btnVermelho = document.querySelector("btnVermelho");
+  const btnRosa = document.querySelector("btnRosa");
+  const btnRoxo = document.querySelector("btnRoxo");
+  const btnMarrom = document.querySelector("btnMarrom");
+
   const contexto = tela.getContext('2d');
 
   tela.width = 700;
   tela.height = 500;
 
   contexto.lineWidth = 7;
-  contexto.strokeStyle = "red";
+ 
 
   const pincel = {
     ativo: false,
     movendo : false,
     posicao: {x: 0, y: 0},
     posicaoAnterior : null,
-    borracha : false
+    borracha : false,
+    cor : "black",
   }
 
   const desenhaLinha = (linha) => {
@@ -32,8 +42,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
       contexto.strokeStyle = "white";
     } else {
       contexto.lineWidth = 7;
-      contexto.strokeStyle = "red";
+      contexto.strokeStyle = pincel.cor;
     }
+  }
+
+  const setCorPincel = (cor)=> {
+    contexto.strokeStyle = cor;
+    pincel.cor = cor;
   }
 
   tela.onmousedown = (evento) => {
@@ -53,6 +68,42 @@ document.addEventListener('DOMContentLoaded', ()=> {
   btnBorracha.onclick = (evento) => {
     ativarOuDesativarBorracha();
   }
+
+  btnColor.forEach(btn => {
+    btn.onclick = (evento) => {
+      console.log(">>>", btn.id)
+      switch (btn.id) {
+        case 'btnAzul':
+          setCorPincel("blue")
+          break;
+        case 'btnVerde':
+          setCorPincel("green")
+          break;
+        case 'btnAmarelo':
+          setCorPincel("yellow")
+          break;
+        case 'btnRoxo':
+          setCorPincel("purple")
+          break;
+        case 'btnRosa':
+          setCorPincel("pink")
+          break;
+        case 'btnMarrom':
+          setCorPincel("brown")
+          break;
+        case 'btnPreto':
+          setCorPincel("black")
+          break;
+        case 'btnVermelho':
+          setCorPincel("red")
+          break;
+          
+          
+        default:
+          console.log('cor invalida ' + btn.id);
+      }
+    }
+  });
 
   const cliclo = () => {
     if (pincel.ativo && pincel.movendo && pincel.posicaoAnterior) {

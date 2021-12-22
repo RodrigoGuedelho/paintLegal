@@ -1,6 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  background-color: rgb(214, 212, 212);
 }
 
 #telaDesenho {
@@ -8,5 +9,52 @@ body {
   height: 500;
   border-style: solid;
   border-color: black;
+  background-color: white;
 }
+
+.btn-color {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-color-azul {
+  background-color: blue;
+}
+.btn-color-vermelho {
+  background-color: red;
+}
+
+.btn-color-roxo {
+  background-color: purple;
+}
+
+.btn-color-rosa {
+  background-color: pink;
+}
+
+.btn-color-amarelo {
+  background-color: yellow;
+}
+
+.btn-color-verde {
+  background-color: green;
+}
+.btn-color-marrom {
+  background-color: brown;
+}
+
+.btn-color-preto {
+  background-color: black;
+}
+
+#div-opcoes {
+  margin-top: 3px;
+  width: 700px;
+  height: 50px;
+  border-style: double;
+  border-color: black;
+  display: flex;
+}
+
+
 
