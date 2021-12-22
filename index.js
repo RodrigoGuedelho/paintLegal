@@ -3,12 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const btnBorracha = document.querySelector("#btnBorracha");
   
   const btnColor = document.querySelectorAll(".btn-color");
-  const btnVerde = document.querySelector("btnVerde");
-  const btnAmarelo = document.querySelector("btnAmarelo");
-  const btnVermelho = document.querySelector("btnVermelho");
-  const btnRosa = document.querySelector("btnRosa");
-  const btnRoxo = document.querySelector("btnRoxo");
-  const btnMarrom = document.querySelector("btnMarrom");
+  const btnSalvar = document.querySelector("#btnSalvar");
 
   const contexto = tela.getContext('2d');
 
@@ -81,7 +76,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
           break;
         case 'btnAmarelo':
           setCorPincel("yellow")
-          break;
+          break;window.open(canvas.toDataURL("image/png"));
         case 'btnRoxo':
           setCorPincel("purple")
           break;
@@ -105,6 +100,18 @@ document.addEventListener('DOMContentLoaded', ()=> {
     }
   });
 
+  btnSalvar.onclick = (evento) => {
+    var imagem = tela.toDataURL("image/png");
+    /*Mudando o padrão para poder forçar o download*/
+    imagem = imagem.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+   
+    /* Em caso de abrir a imagem em uma outra aba do navegador */
+    //var abrirNovaJanela = window.open('about:blank','image from canvas');
+    //abrirNovaJanela.document.write("<img src='"+imagem+"' alt='from canvas'/>");
+    window.open(imagem);
+  }
+
+  
   const cliclo = () => {
     if (pincel.ativo && pincel.movendo && pincel.posicaoAnterior) {
       desenhaLinha({posicao : pincel.posicao, posicaoAnterior : pincel.posicaoAnterior});
